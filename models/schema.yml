@@ -9,7 +9,7 @@ sources:
         columns: 
          - name : date_date
            description: date of purchase 
-         - name: order_id
+         - name: orders_id
            description: primary key
          - name: product_id
            description: number of indentification of these products 
