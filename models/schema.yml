@@ -23,7 +23,10 @@ sources:
            description: income of theses sales 
          - name: quantity
            description: quantity of these sales 
-
+        tests:
+          - unique:
+             column_name: "(orders_id || '-' || pdt_id)"
+       
       - name: product
         identifier: raw_gz_product
         columns:
