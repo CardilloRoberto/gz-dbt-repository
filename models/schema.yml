@@ -1,15 +1,13 @@
 version: 2
 
 sources:
-  - name: raw  # This is the logical name for the dataset
+  - name: raw # This is the logical name for the dataset
     database: gz_raw_data
-    schema: raw  # This reflects the actual schema name in BigQuery
+    schema: gz_raw_data # This reflects the actual schema name in BigQuery
     tables:
       - name: sales
-        identifier: raw_gz_sales  # The actual table name in the database
+        identifier: raw_gz_sales # The actual table name in the database
       - name: product
         identifier: raw_gz_product
       - name: ship
         identifier: raw_gz_ship
-
-
