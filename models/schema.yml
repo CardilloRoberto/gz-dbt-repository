@@ -5,7 +5,13 @@ sources:
     schema: gz_raw_data
     tables:
       - name: sales
+        description: "Contains historical sales data up to 2021."
         identifier: raw_gz_sales # The actual table name in the database
+        loaded_at_field: "CAST( date_date AS TIMESTAMP)" 
+        freshness:
+          warn_after: {count: 90, period: day}  # Warn if the latest data is older than 90 days
+          
+
         columns: 
          - name : date_date
            description: date of purchase 
