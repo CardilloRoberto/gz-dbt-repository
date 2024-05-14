@@ -2,8 +2,7 @@ version: 2
 
 sources:
   - name: raw # This is the logical name for the dataset
-    database: gz_raw_data
-    schema: raw # This reflects the actual schema name in BigQuery
+    schema: gz_raw_data
     tables:
       - name: sales
         identifier: raw_gz_sales # The actual table name in the database
