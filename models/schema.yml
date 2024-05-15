@@ -7,54 +7,53 @@ sources:
       - name: sales
         description: "Contains historical sales data up to 2021."
         identifier: raw_gz_sales # The actual table name in the database
-        loaded_at_field: "CAST( date_date AS TIMESTAMP)" 
+        loaded_at_field: "CAST( date_date AS TIMESTAMP)"
         freshness:
-          warn_after: {count: 90, period: day}  # Warn if the latest data is older than 90 days
-          
+          warn_after: { count: 90, period: day } # Warn if the latest data is older than 90 days
 
-        columns: 
-         - name : date_date
-           description: date of purchase 
-         - name: orders_id
-           description: primary key
-         - name: product_id
-           description: number of indentification of these products 
-         - name: revenue
-           description: income of theses sales 
-         - name: quantity
-           description: quantity of these sales 
+        columns:
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: primary key
+          - name: product_id
+            description: number of indentification of these products
+          - name: revenue
+            description: income of theses sales
+          - name: quantity
+            description: quantity of these sales
         tests:
           - unique:
-             column_name: "(orders_id || '-' || pdt_id)"
-       
+              column_name: "(orders_id || '-' || pdt_id)"
+
       - name: product
         identifier: raw_gz_product
         columns:
-          - name: products_id 
+          - name: products_id
             description: primary key
             tests:
               - unique
               - not_null
-              
+
           - name: purchase_price
-            description: price of these purchase by product id 
+            description: price of these purchase by product id
       - name: ship
         identifier: raw_gz_ship
         columns:
           - name: orders_id
-            description: primary key 
+            description: primary key
             tests:
               - unique
               - not_null
-              
-          - name:  shipping_fee
-            description: fee of these shipping 
+
+          - name: shipping_fee
+            description: fee of these shipping
           - name: logcost
-            description: logistic cost 
+            description: logistic cost
           - name: ship_cost
-            description: cost of these shipping 
+            description: cost of these shipping
       - name: adwords
-        indentifier: raw_gz_adwords
+        identifier: raw_gz_adwords
         columns:
           - name: date_date
             description: date of ads
@@ -71,7 +70,7 @@ sources:
           - name: click
             description: clicks
       - name: bing
-        indentifier: raw_gz_bing
+        identifier: raw_gz_bing
         columns:
           - name: date_date
             description: date
@@ -88,7 +87,7 @@ sources:
           - name: clicks
             description: click
       - name: criteo
-        indentifier: raw_gz_criteo
+        identifier: raw_gz_criteo
         columns:
           - name: date_date
             description: date
@@ -105,7 +104,7 @@ sources:
           - name: click
             description: clicks
       - name: facebook
-        indentifier: raw_gz_facebook
+        identifier: raw_gz_facebook
         columns:
           - name: date_date
             description: date
