@@ -19,10 +19,10 @@ renamed as (
 
 )
 SELECT
-    orders_id,
-    shipping_fee,
-    logcost,
-    ship_cost
+    cast(orders_id as INT64) as orders_id,
+    cast(shipping_fee as FLOAT64) as shipping_fee,
+    cast(logcost as FLOAT64) as logcost,
+    cast(ship_cost as STRING) as ship_cost
 FROM
     {{ source('raw', 'ship') }}
 
