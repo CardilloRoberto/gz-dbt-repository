@@ -1,0 +1,55 @@
+version: 2
+
+sources:
+  - name: raw # This is the logical name for the dataset
+    schema: gz_raw_data
+    tables:
+      - name: sales
+        description: "Contains historical sales data up to 2021."
+        identifier: raw_gz_sales # The actual table name in the database
+        loaded_at_field: "CAST( date_date AS TIMESTAMP)" 
+        freshness:
+          warn_after: {count: 90, period: day}  # Warn if the latest data is older than 90 days
+          
+
+        columns: 
+         - name : date_date
+           description: date of purchase 
+         - name: orders_id
+           description: primary key
+         - name: product_id
+           description: number of indentification of these products 
+         - name: revenue
+           description: income of theses sales 
+         - name: quantity
+           description: quantity of these sales 
+        tests:
+          - unique:
+             column_name: "(orders_id || '-' || pdt_id)"
+       
+      - name: product
+        identifier: raw_gz_product
+        columns:
+          - name: products_id 
+            description: primary key
+            tests:
+              - unique
+              - not_null
+              
+          - name: purchase_price
+            description: price of these purchase by product id 
+      - name: ship
+        identifier: raw_gz_ship
+        columns:
+          - name: orders_id
+            description: primary key 
+            tests:
+              - unique
+              - not_null
+              
+          - name:  shipping_fee
+            description: fee of these shipping 
+          - name: logcost
+            description: logistic cost 
+          - name: ship_cost
+            description: cost of these shipping 
