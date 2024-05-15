@@ -29,4 +29,4 @@ select
     cast(ads_cost as FLOAT64) as ads_cost,
     impression,
     click
- from renamed
+from renamed
