@@ -125,8 +125,5 @@ sources:
             description: impressions 
             - name: click
             description: clicks 
-                
-
-
 
      
