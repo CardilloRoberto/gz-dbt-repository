@@ -8,7 +8,14 @@ source as (
 
 renamed as (
 
-    select
+    select 
+        date_date,
+        paid_source,
+        campaign_key,
+        camPGN_name,
+        ads_cost,
+        impression,
+        click
 
     from source
 
