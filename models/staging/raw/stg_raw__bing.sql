@@ -8,11 +8,11 @@ source as (
 
 renamed as (
 
-    select 
+    select
         date_date,
         paid_source,
         campaign_key,
-        camPGN_name,
+        campgn_name,
         ads_cost,
         impression,
         click
@@ -21,4 +21,12 @@ renamed as (
 
 )
 
-select * from renamed
+select 
+    date_date,
+    paid_source,
+    campaign_key,
+    campgn_name,
+    cast(ads_cost as FLOAT64) as ads_cost,
+    impression,
+    click
+ from renamed
